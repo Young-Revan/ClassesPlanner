@@ -1,0 +1,98 @@
+﻿<Window x:Class="CalendarDNF.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:CalendarDNF"
+        mc:Ignorable="d"
+        Title="Планировщик" Height="330" Width="600" Icon="/free-icon-calendar-1254238.png">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="22"></RowDefinition>
+            <RowDefinition></RowDefinition>
+        </Grid.RowDefinitions>
+        <Menu Grid.Row="0">
+            <MenuItem Header="Файл">
+                <MenuItem x:Name="miSave" Header="Сохранить" Click="miSave_Click"></MenuItem>
+                <MenuItem x:Name="miLoad" Header="Загрузить" Click="miLoad_Click"></MenuItem>
+            </MenuItem>
+            <MenuItem Header="О программе" Click="MenuItem_Click"></MenuItem>
+        </Menu>
+        <Grid Grid.Row="1">
+            <Grid.RowDefinitions>
+                <RowDefinition></RowDefinition>
+                <RowDefinition Height="50"></RowDefinition>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition></ColumnDefinition>
+                <ColumnDefinition></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+            <StackPanel Orientation="Vertical" Grid.Column="0" Grid.Row="0">
+                <Label Margin="10, 0, 0, 0">Начало учебного года</Label>
+                <DatePicker x:Name="dpBegin" Grid.Column="0" Grid.Row="0" Margin="10" FirstDayOfWeek="Monday" SelectedDateFormat="Short">
+                    <DatePicker.ToolTip>
+                        <ToolTip>
+                            <TextBlock Text="Нажмите на символ календаря, чтобы выбрать начало учебного года" TextWrapping="Wrap" Width="200"></TextBlock>
+                        </ToolTip>
+                    </DatePicker.ToolTip>
+                </DatePicker>
+                <Label Margin="10, 30, 0, 0">Конец учебного года</Label>
+                <DatePicker x:Name="dpEnd" Grid.Column="1" Grid.Row="0" Margin="10" FirstDayOfWeek="Monday">
+                    <DatePicker.ToolTip>
+                        <ToolTip>
+                            <TextBlock Text="Нажмите на символ календаря, чтобы выбрать конец учебного года" TextWrapping="Wrap" Width="200"></TextBlock>
+                        </ToolTip>
+                    </DatePicker.ToolTip>
+                </DatePicker>
+                <Button x:Name="holidaysButton" Margin="0, 30, 0, 0" HorizontalAlignment="Center" Content="   Нерабочие дни   " Click="holidaysButton_Click"></Button>
+            </StackPanel>
+            <Grid Grid.Column="1" VerticalAlignment="Top">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition></ColumnDefinition>
+                    <ColumnDefinition></ColumnDefinition>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition></RowDefinition>
+                    <RowDefinition></RowDefinition>
+                    <RowDefinition></RowDefinition>
+                    <RowDefinition></RowDefinition>
+                    <RowDefinition></RowDefinition>
+                    <RowDefinition></RowDefinition>
+                    <RowDefinition></RowDefinition>
+                    <RowDefinition></RowDefinition>
+                    <RowDefinition></RowDefinition>
+                </Grid.RowDefinitions>
+                <Grid.ToolTip>
+                    <ToolTip>
+                        <TextBlock Text="Выберите дни для занятий и укажите количество часов на день." TextWrapping="Wrap" Width="200"></TextBlock>
+                    </ToolTip>
+                </Grid.ToolTip>
+                <Label VerticalAlignment="Center" Grid.Column="0">Дни недели</Label>
+                <Label VerticalAlignment="Center" Grid.Column="1">Часы в день</Label>
+                <CheckBox x:Name="cbMonday" Content="Понедельник" IsThreeState="False" Grid.Row="1" VerticalAlignment="Center" Margin="0, 2, 0, 2" Checked="cbMonday_Checked" Unchecked="cbMonday_Unchecked"></CheckBox>
+                <CheckBox x:Name="cbTuesday" Content="Вторник" IsThreeState="False" Grid.Row="2" VerticalAlignment="Center" Margin="0, 2, 0, 2" Checked="cbTuesday_Checked" Unchecked="cbTuesday_Unchecked"></CheckBox>
+                <CheckBox x:Name="cbWednesday" Content="Среда" IsThreeState="False" Grid.Row="3" VerticalAlignment="Center" Margin="0, 2, 0, 2" Checked="cbWednesday_Checked" Unchecked="cbWednesday_Unchecked"></CheckBox>
+                <CheckBox x:Name="cbThursday" Content="Четверг" IsThreeState="False" Grid.Row="4" VerticalAlignment="Center" Margin="0, 2, 0, 2" Checked="cbThursday_Checked" Unchecked="cbThursday_Unchecked"></CheckBox>
+                <CheckBox x:Name="cbFriday" Content="Пятница" IsThreeState="False" Grid.Row="5" VerticalAlignment="Center" Margin="0, 2, 0, 2" Checked="cbFriday_Checked" Unchecked="cbFriday_Unchecked"></CheckBox>
+                <CheckBox x:Name="cbSaturday" Content="Суббота" IsThreeState="False" Grid.Row="6" VerticalAlignment="Center" Margin="0, 2, 0, 2" Checked="cbSaturday_Checked" Unchecked="cbSaturday_Unchecked"></CheckBox>
+                <CheckBox x:Name="cbSunday" Content="Воскресенье" IsThreeState="False" Grid.Row="7" VerticalAlignment="Center" Margin="0, 2, 0, 2" Checked="cbSunday_Checked" Unchecked="cbSunday_Unchecked"></CheckBox>
+                <TextBox x:Name="tbMonday" VerticalAlignment="Center" HorizontalAlignment="Left" Grid.Column="1" Grid.Row="1" Width="30" IsEnabled="False"></TextBox>
+                <TextBox x:Name="tbTuesday" VerticalAlignment="Center" HorizontalAlignment="Left" Grid.Column="1" Grid.Row="2" Width="30" IsEnabled="False"></TextBox>
+                <TextBox x:Name="tbWednesday" VerticalAlignment="Center" HorizontalAlignment="Left" Grid.Column="1" Grid.Row="3" Width="30" IsEnabled="False"></TextBox>
+                <TextBox x:Name="tbThursday" VerticalAlignment="Center" HorizontalAlignment="Left" Grid.Column="1" Grid.Row="4" Width="30" IsEnabled="False"></TextBox>
+                <TextBox x:Name="tbFriday" VerticalAlignment="Center" HorizontalAlignment="Left" Grid.Column="1" Grid.Row="5" Width="30" IsEnabled="False"></TextBox>
+                <TextBox x:Name="tbSaturday" VerticalAlignment="Center" HorizontalAlignment="Left" Grid.Column="1" Grid.Row="6" Width="30" IsEnabled="False"></TextBox>
+                <TextBox x:Name="tbSunday" VerticalAlignment="Center" HorizontalAlignment="Left" Grid.Column="1" Grid.Row="7" Width="30" IsEnabled="False"></TextBox>
+                <Label Grid.Column="0" Grid.Row="8" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="0, 0, 0, 0">Всего часов в году</Label>
+                <TextBox x:Name="tbAllTime" Grid.Column="1" Grid.Row="8" VerticalAlignment="Center" HorizontalAlignment="Left" Width="50"></TextBox>
+            </Grid>
+            <Button x:Name="procesButton" Grid.Column="1" Grid.Row="1" Content="Рассчитать" Margin="10" Click="procesButton_Click">
+                <Button.ToolTip>
+                    <ToolTip>
+                        <TextBlock Text="Нажмите, чтобы вывести список дат дней занятий" TextWrapping="Wrap" Width="200"></TextBlock>
+                    </ToolTip>
+                </Button.ToolTip>
+            </Button>
+        </Grid>
+    </Grid>
+</Window>
